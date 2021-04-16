@@ -64,8 +64,8 @@ module FastCamelize
   # Hook into ActiveSupport::Inflector to take advantage of FastCamelize.
   def self.active_support
     ActiveSupport::Inflector.alias_method(:as_camelize, :camelize)
-    ActiveSupport::Inflector.include(ActiveSupportInflectorPatch)
-    String.include(ActiveSupportStringPatch)
+    ActiveSupport::Inflector.prepend(ActiveSupportInflectorPatch)
+    String.prepend(ActiveSupportStringPatch)
   end
 end
 
