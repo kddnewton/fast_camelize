@@ -1,0 +1,10 @@
+module FastCamelize
+  VERSION: String
+
+  def self.active_support: () -> void
+  def self.camelize: (String string, ?acronyms: Hash[String, String]) -> String
+end
+
+class String
+  def camelize: (?acronyms: Hash[String, String]) -> String
+end

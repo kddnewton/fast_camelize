@@ -1,0 +1,10 @@
+/.bundle/
+/.vscode
+/.yardoc
+/_yardoc/
+/coverage/
+/doc/
+/pkg/
+/spec/reports/
+/tmp/
+/lib/fast_camelize/fast_camelize.bundle
