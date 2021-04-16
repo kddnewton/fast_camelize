@@ -9,10 +9,17 @@ require 'fast_camelize/fast_camelize'
 # to account for. In this case, we're going to first allow ActiveSupport to do
 # that work, then we're going to do the actual camelization.
 module FastCamelize
-  # Override ActiveSupport::Inflector::camelize to use
-  # FastCamelize::camelize.
+  # Override ActiveSupport::Inflector::camelize to use FastCamelize::camelize.
   module ActiveSupportInflectorPatch
+    # Disabling rubocop here so that we can directly match the implementation in
+    # the Rails source, so it's easier when Rails changes it.
+    # rubocop:disable all
     def camelize(string, uppercase_first_letter = true)
+      # This assignment is largely just here for type checking. This module is
+      # always going to be included in ActiveSupport::Inflector, but rbs doesn't
+      # have requires_ancestor-ish support yet.
+      inflections = ActiveSupport::Inflector.inflections
+
       string = string.to_s
       if uppercase_first_letter
         string = string.sub(/^[a-z\d]*/) { |match| inflections.acronyms[match] || match.capitalize }
@@ -22,6 +29,7 @@ module FastCamelize
 
       FastCamelize.camelize(string, acronyms: inflections.acronyms)
     end
+    # rubocop:disable all
   end
 
   # Override ActiveSupport::Inflector::method_added so that if and when the
