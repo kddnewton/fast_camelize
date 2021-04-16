@@ -159,7 +159,7 @@ static VALUE camelize(VALUE string, VALUE kwargs) {
   // If we're in the DEFAULT or SEGBODY state, then we need to flush out the
   // remaining segment.
   if ((state == STATE_SEGBODY || state == STATE_DEFAULT) && segment_size > 0) {
-    copy_segment(result, &result_size, segment, &segment_size, acronyms, true);
+    copy_segment(result, &result_size, segment, &segment_size, acronyms, state == STATE_SEGBODY);
   }
 
   return rb_enc_str_new(result, result_size, encoding);

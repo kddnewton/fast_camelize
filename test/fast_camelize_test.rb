@@ -31,11 +31,8 @@ class FastCamelizeTest < Minitest::Test
     'HTTP::RESTful' => 'http/restful',
     'HTTP::RESTfulAPI' => 'http/restful_api',
     'APIRESTful' => 'api_restful',
-    'Capistrano' => 'capistrano',
     'capiController' => 'capi_controller',
     'httpsApis' => 'https_apis',
-    'Html5' => 'html5',
-    'Restfully' => 'restfully',
     'roRails' => 'ro_rails'
   }.freeze
 

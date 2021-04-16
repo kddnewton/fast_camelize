@@ -32,6 +32,26 @@ module FastCamelize
     # rubocop:disable all
   end
 
+  # Override String#camelize if we need to get back to the original behavior
+  # that fast_camelize overroad.
+  module ActiveSupportStringPatch
+    def camelize(first_letter = :upper)
+      case first_letter
+      when :upper
+        ActiveSupport::Inflector.camelize(self, true)
+      when :lower
+        ActiveSupport::Inflector.camelize(self, false)
+      else
+        # Skipping here because Steep doesn't understand that this is going to
+        # be included into a class that has Kernel included.
+        __skip__ =
+          begin
+            raise ArgumentError, 'Invalid option, use either :upper or :lower.'
+          end
+      end
+    end
+  end
+
   # Override ActiveSupport::Inflector::method_added so that if and when the
   # camelize method gets defined, we can immediately redefine it.
   module ActiveSupportDelayedPatch
@@ -45,6 +65,7 @@ module FastCamelize
   def self.active_support
     ActiveSupport::Inflector.alias_method(:as_camelize, :camelize)
     ActiveSupport::Inflector.include(ActiveSupportInflectorPatch)
+    String.include(ActiveSupportStringPatch)
   end
 end
 
