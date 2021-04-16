@@ -5,9 +5,9 @@ require 'fast_camelize/fast_camelize'
 
 # By default, FastCamelize already defines String#camelize and
 # FastCamelize::camelize. In the case that we're using ActiveSupport,
-# however, there is the additional functionality of transliteration that we need
-# to account for. In this case, we're going to first allow ActiveSupport to do
-# that work, then we're going to do the actual camelization.
+# however, there is the additional functionality of defined acronyms that we
+# need to account for. In this case, we're going to first allow ActiveSupport to
+# do that work, then we're going to do the actual camelization.
 module FastCamelize
   # Override ActiveSupport::Inflector::camelize to use FastCamelize::camelize.
   module ActiveSupportInflectorPatch
@@ -41,8 +41,7 @@ module FastCamelize
     end
   end
 
-  # Hook into ActiveSupport::Inflector and String to take advantage of
-  # FastCamelize.
+  # Hook into ActiveSupport::Inflector to take advantage of FastCamelize.
   def self.active_support
     ActiveSupport::Inflector.alias_method(:as_camelize, :camelize)
     ActiveSupport::Inflector.include(ActiveSupportInflectorPatch)

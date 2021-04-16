@@ -28,7 +28,7 @@
  */
 
 // This is the current state of the state machine being used to compile the
-// parameterized string.
+// camelized string.
 enum state {
   STATE_DEFAULT,
   STATE_SEGSTART,

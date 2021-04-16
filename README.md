@@ -11,15 +11,15 @@ At last check, these were the benchmarks (obtained by running `bin/bench` with A
 
 ```
 Warming up --------------------------------------
-       ActiveSupport     8.000  i/100ms
-    FastCamelize   131.000  i/100ms
+       ActiveSupport    20.000  i/100ms
+        FastCamelize    74.000  i/100ms
 Calculating -------------------------------------
-       ActiveSupport     82.566  (± 2.4%) i/s -    416.000  in   5.042230s
-    FastCamelize      1.308k (± 3.4%) i/s -      6.550k in   5.014582s
+       ActiveSupport    202.091  (± 7.4%) i/s -      1.020k in   5.081583s
+        FastCamelize    974.025  (± 2.3%) i/s -      4.884k in   5.016944s
 
 Comparison:
-    FastCamelize:     1308.0 i/s
-       ActiveSupport:       82.6 i/s - 15.84x  (± 0.00) slower
+        FastCamelize:      974.0 i/s
+       ActiveSupport:      202.1 i/s - 4.82x  (± 0.00) slower
 ```
 
 ## Installation
