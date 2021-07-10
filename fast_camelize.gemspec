@@ -5,8 +5,8 @@ require_relative 'lib/fast_camelize/version'
 Gem::Specification.new do |spec|
   spec.name    = 'fast_camelize'
   spec.version = FastCamelize::VERSION
-  spec.authors = ['Kevin Deisz']
-  spec.email   = ['kevin.deisz@gmail.com']
+  spec.authors = ['Kevin Newton']
+  spec.email   = ['kddnewton@gmail.com']
 
   spec.summary     = 'Fast String#camelize implementation'
   spec.description = 'Provides a C-optimized method for camelizing a string'
