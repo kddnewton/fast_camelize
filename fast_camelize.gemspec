@@ -10,7 +10,7 @@ Gem::Specification.new do |spec|
 
   spec.summary     = 'Fast String#camelize implementation'
   spec.description = 'Provides a C-optimized method for camelizing a string'
-  spec.homepage    = 'https://github.com/kddeisz/fast_camelize'
+  spec.homepage    = 'https://github.com/kddnewton/fast_camelize'
   spec.license     = 'MIT'
 
   spec.files = Dir.chdir(__dir__) do
