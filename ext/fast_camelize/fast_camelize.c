@@ -112,7 +112,7 @@ static VALUE camelize(VALUE string, VALUE kwargs) {
             copy_segment(result, &result_size, segment, &segment_size, acronyms, false);
           }
           if (codepoint == '/') {
-            strncpy(result + result_size, "::", 2);
+            memcpy(result + result_size, "::", 2);
             result_size += 2;
           }
           state = STATE_SEGSTART;
@@ -123,7 +123,7 @@ static VALUE camelize(VALUE string, VALUE kwargs) {
         if (codepoint == '_') {
           // do nothing
         } else if (codepoint == '/') {
-          strncpy(result + result_size, "::", 2);
+          memcpy(result + result_size, "::", 2);
           result_size += 2;
         } else if (isasciialnum(codepoint)) {
           segment[segment_size++] = codepoint;
@@ -143,7 +143,7 @@ static VALUE camelize(VALUE string, VALUE kwargs) {
           if (codepoint == '_') {
             state = STATE_SEGSTART;
           } else if (codepoint == '/') {
-            strncpy(result + result_size, "::", 2);
+            memcpy(result + result_size, "::", 2);
             result_size += 2;
             state = STATE_SEGSTART;
           } else {
