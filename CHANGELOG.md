@@ -6,6 +6,12 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/) a
 
 ## [Unreleased]
 
+## [0.1.4] - 2021-12-09
+
+### Changed
+
+- Change `strncpy` instances to `memcpy` when the string isn't null terminated to avoid warnings.
+
 ## [0.1.3] - 2021-11-17
 
 ### Changed
@@ -30,7 +36,8 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/) a
 
 - 🎉 Initial release! 🎉
 
-[unreleased]: https://github.com/kddnewton/fast_camelize/compare/v0.1.3...HEAD
+[unreleased]: https://github.com/kddnewton/fast_camelize/compare/v0.1.4...HEAD
+[0.1.4]: https://github.com/kddnewton/fast_camelize/compare/v0.1.3...v0.1.4
 [0.1.3]: https://github.com/kddnewton/fast_camelize/compare/v0.1.2...v0.1.3
 [0.1.2]: https://github.com/kddnewton/fast_camelize/compare/v0.1.1...v0.1.2
 [0.1.1]: https://github.com/kddnewton/fast_camelize/compare/v0.1.0...v0.1.1
