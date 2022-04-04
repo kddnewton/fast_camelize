@@ -32,3 +32,6 @@ Style/FormatStringToken:
 
 Style/PerlBackrefs:
   Enabled: false
+
+Style/StringLiterals:
+  EnforcedStyle: double_quotes
