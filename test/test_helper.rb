@@ -1,9 +1,9 @@
 # frozen_string_literal: true
 
-require 'simplecov'
+require "simplecov"
 SimpleCov.start
 
-$LOAD_PATH.unshift File.expand_path('../lib', __dir__)
-require 'fast_camelize'
+$LOAD_PATH.unshift File.expand_path("../lib", __dir__)
+require "fast_camelize"
 
-require 'minitest/autorun'
+require "minitest/autorun"

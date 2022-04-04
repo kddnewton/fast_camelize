@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
-require 'fast_camelize/version'
-require 'fast_camelize/fast_camelize'
+require "fast_camelize/version"
+require "fast_camelize/fast_camelize"
 
 # By default, FastCamelize already defines String#camelize and
 # FastCamelize::camelize. In the case that we're using ActiveSupport,

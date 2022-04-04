@@ -1,22 +1,22 @@
 #!/usr/bin/env ruby
 # frozen_string_literal: true
 
-require 'bundler/setup'
-require 'benchmark/ips'
+require "bundler/setup"
+require "benchmark/ips"
 
-require 'fast_camelize'
-require 'active_support/inflector'
+require "fast_camelize"
+require "active_support/inflector"
 
 source =
-  %w[_ - : :: / 漢字 😊🎉] + ('a'..'z').to_a + ('A'..'Z').to_a + ('0'..'9').to_a
+  %w[_ - : :: / 漢字 😊🎉] + ("a".."z").to_a + ("A".."Z").to_a + ("0".."9").to_a
 words = 500.times.map { Array.new(100) { source.sample }.join }
 
 Benchmark.ips do |x|
-  x.report('ActiveSupport') do
+  x.report("ActiveSupport") do
     words.each { |word| ActiveSupport::Inflector.as_camelize(word) }
   end
 
-  x.report('FastCamelize') do
+  x.report("FastCamelize") do
     words.each { |word| FastCamelize.camelize(word) }
   end
 
