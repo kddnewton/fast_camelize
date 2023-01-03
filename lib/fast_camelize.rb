@@ -22,9 +22,15 @@ module FastCamelize
 
       string = string.to_s
       if uppercase_first_letter
-        string = string.sub(/^[a-z\d]*/) { |match| inflections.acronyms[match] || match.capitalize }
+        string =
+          string.sub(/^[a-z\d]*/) do |match|
+            inflections.acronyms[match] || match.capitalize
+          end
       else
-        string = string.sub(inflections.acronyms_camelize_regex) { |match| match.downcase }
+        string =
+          string.sub(inflections.acronyms_camelize_regex) do |match|
+            match.downcase
+          end
       end
 
       FastCamelize.camelize(string, acronyms: inflections.acronyms)
@@ -46,7 +52,7 @@ module FastCamelize
         # be included into a class that has Kernel included.
         __skip__ =
           begin
-            raise ArgumentError, 'Invalid option, use either :upper or :lower.'
+            raise ArgumentError, "Invalid option, use either :upper or :lower."
           end
       end
     end

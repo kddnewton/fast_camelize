@@ -1,7 +1,9 @@
 name: Main
+
 on:
 - push
 - pull_request_target
+
 jobs:
   ci:
     name: CI
@@ -13,9 +15,10 @@ jobs:
     - uses: ruby/setup-ruby@v1
       with:
         bundler-cache: true
-        ruby-version: '3.1'
+        ruby-version: '3.2'
     - name: Lint and test
       run: |
+        bundle exec rake stree:check
         bundle exec rubocop --parallel
         bundle exec rake test
 
@@ -27,21 +30,6 @@ jobs:
     - uses: actions/checkout@master
     - uses: ruby/setup-ruby@v1
       with:
-        ruby-version: '3.1'
+        ruby-version: '3.2'
         bundler-cache: true
     - run: bundle exec rake test:valgrind
-
-  automerge:
-    name: AutoMerge
-    needs: [ci, valgrind]
-    runs-on: ubuntu-latest
-    if: github.event_name == 'pull_request_target' && github.actor == 'dependabot[bot]'
-    steps:
-    - uses: actions/github-script@v3
-      with:
-        script: |
-          github.pulls.merge({
-            owner: context.payload.repository.owner.login,
-            repo: context.payload.repository.name,
-            pull_number: context.payload.pull_request.number
-          })

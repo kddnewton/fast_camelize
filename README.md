@@ -27,7 +27,7 @@ Comparison:
 Add this line to your application's Gemfile:
 
 ```ruby
-gem 'fast_camelize'
+gem "fast_camelize"
 ```
 
 And then execute:
